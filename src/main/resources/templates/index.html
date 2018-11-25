@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>K-means festive</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Make all the clusters</h1>
+<form action="#" th:action="@{/}" th:object="${kmeansForm}" method="post">	
+	<input name="submit" type="submit" value="submit" />
+</form>
+<th:block th:if="${centroids != null}">
+	<div th:each="cent,iter: ${centroids.allcentroids}">
+		<span th:text="'Cluster number: ' + ${iter.index +1}"></span>
+		<p th:each="blog: ${cent.blogList}">
+			<span th:text="${blog.name}"></span>
+		</p>
+		<p>----------</p>
+	</div>
+</th:block>
+
+</body>
+</html>
